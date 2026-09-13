@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#18181b"/>
+  <!-- Isometric 3D Box for ERP Inventaris -->
+  <path d="M16 6.5L8 11.2v9.6l8 4.7 8-4.7V11.2L16 6.5zm0 2.3l6 3.5-6 3.5-6-3.5 6-3.5zm-6.8 5.1l5.8 3.4v6.2l-5.8-3.4v-6.2zm13.6 0v6.2l-5.8 3.4v-6.2l5.8-3.4z" fill="#ffffff"/>
+</svg>
