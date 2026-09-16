@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('status', [
                 'pending_verification',
                 'verified',
-                'rejected'
+                'rejected',
             ])->default('pending_verification');
             $table->text('notes')->nullable();
             $table->timestamps();

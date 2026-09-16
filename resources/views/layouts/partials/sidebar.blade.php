@@ -43,7 +43,7 @@
                     'url'         => url('/vendors'),
                     'route_match' => 'vendors*',
                     'icon'        => '<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.25V3.75a.75.75 0 00-.75-.75h-9a.75.75 0 00-.75.75v10.5c0 .414.336.75.75.75h9a.75.75 0 00.75-.75z"/></svg>',
-                    'permission'  => 'manage vendors',
+                    'permission'  => null,
                 ],
             ]
         ],
@@ -55,16 +55,14 @@
                     'url'         => url('/purchase-requests'),
                     'route_match' => 'purchase-requests*',
                     'icon'        => '<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>',
-                    'badge'       => '6 PR',
-                    'badge_color' => 'amber',
-                    'permission'  => 'view purchase-requests',
+                    'permission'  => null,
                 ],
                 [
                     'title'       => 'Purchase Order (PO)',
                     'url'         => url('/purchase-orders'),
                     'route_match' => 'purchase-orders*',
                     'icon'        => '<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>',
-                    'permission'  => 'view purchase-orders',
+                    'permission'  => null,
                 ],
             ]
         ],
@@ -145,10 +143,10 @@
     ];
 @endphp
 
-<aside class="w-64 bg-white border-r border-gray-200/80 text-gray-700 flex flex-col shrink-0 h-screen sticky top-0 select-none">
+<aside class="w-64 bg-white border-r border-gray-200 text-gray-700 flex flex-col shrink-0 h-screen sticky top-0 select-none">
 
     {{-- Header Sidebar: Logo & Identitas Filament-Styled --}}
-    <div class="h-16 flex items-center justify-between px-5 border-b border-gray-200/80 bg-white">
+    <div class="h-16 shrink-0 flex items-center justify-between px-5 border-b border-gray-200 bg-white">
         <a href="{{ url('/') }}" class="flex items-center gap-3 group">
             {{-- Filament Amber Geometric Mark --}}
             <div class="w-8 h-8 rounded-lg bg-amber-500 text-white font-bold flex items-center justify-center text-sm tracking-tight shadow-xs ring-1 ring-amber-600/30 group-hover:bg-amber-600 transition duration-150">
@@ -228,7 +226,7 @@
     </nav>
 
     {{-- Footer Bar Sidebar --}}
-    <div class="p-3.5 border-t border-gray-200/80 bg-gray-50/70 text-xs text-gray-500 flex items-center justify-between">
+    <div class="p-3.5 border-t border-gray-200 bg-gray-50/70 text-xs text-gray-500 flex items-center justify-between">
         <span class="inline-flex items-center gap-1.5 font-medium text-gray-700">
             <span class="w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-emerald-500/20"></span>
             <span>Online</span>

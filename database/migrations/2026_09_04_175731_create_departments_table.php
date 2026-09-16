@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 30)->unique(); //contoh = "HRD", "IT", "FINANCE"
-            $table->string('name', 100); //nama
+            $table->string('code', 30)->unique(); // contoh = "HRD", "IT", "FINANCE"
+            $table->string('name', 100); // nama
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();

@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 
 class RoleAndPermissionSeeder extends Seeder
@@ -24,7 +24,7 @@ class RoleAndPermissionSeeder extends Seeder
             'view goods-receipts', 'create goods-receipts', 'verify goods-receipts',
             'view stock', 'manage stock-opnames', 'approve stock-opnames',
             'view invoices', 'verify invoices', 'manage payments',
-            'view audit-logs', 'view reports'
+            'view audit-logs', 'view reports',
         ];
 
         foreach ($permissions as $permission) {

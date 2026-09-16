@@ -10,7 +10,6 @@ class ItemType extends Model
         'code',
         'name',
         'description',
-        'is_active',
     ];
 
     /**

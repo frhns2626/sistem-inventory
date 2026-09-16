@@ -3,17 +3,29 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use App\Models\Unit;
-use App\Models\Warehouse;
 use App\Models\Item;
 use App\Models\ItemStock;
+use App\Models\ItemType;
+use App\Models\Unit;
+use App\Models\Warehouse;
 use Illuminate\Database\Seeder;
 
 class ItemSampleSeeder extends Seeder
 {
     public function run(): void
     {
-        // 1. Kategori Contoh
+        // 1. Tipe Barang Contoh
+        $itemTypes = [
+            ['code' => 'CSM', 'name' => 'Consumable (Barang Habis Pakai)', 'description' => 'Barang operasional yang habis sekali pakai atau berjangka pendek'],
+            ['code' => 'AST', 'name' => 'Asset (Aset Tetap / Inventaris)', 'description' => 'Aset bernilai tinggi yang dipinjamkan/dialokasikan ke divisi atau karyawan'],
+            ['code' => 'RMT', 'name' => 'Raw Material (Bahan Baku)', 'description' => 'Material dan bahan baku untuk kebutuhan perakitan atau teknis'],
+        ];
+
+        foreach ($itemTypes as $t) {
+            ItemType::firstOrCreate(['code' => $t['code']], $t);
+        }
+
+        // 2. Kategori Contoh
         $categories = [
             ['code' => 'CAT-HW', 'name' => 'Hardware & IT', 'description' => 'Perangkat keras komputer dan jaringan'],
             ['code' => 'CAT-ATK', 'name' => 'ATK & Kantor', 'description' => 'Alat tulis dan perlengkapan kantor'],
@@ -25,7 +37,7 @@ class ItemSampleSeeder extends Seeder
             Category::firstOrCreate(['code' => $cat['code']], $cat);
         }
 
-        // 2. Satuan Contoh
+        // 3. Satuan Contoh
         $units = [
             ['name' => 'Unit', 'symbol' => 'Unit'],
             ['name' => 'Dus / Box', 'symbol' => 'Dus'],
@@ -38,7 +50,7 @@ class ItemSampleSeeder extends Seeder
             Unit::firstOrCreate(['symbol' => $u['symbol']], $u);
         }
 
-        // 3. Gudang Contoh
+        // 4. Gudang Contoh
         $warehouses = [
             ['code' => 'WH-01', 'name' => 'Gudang Utama (G-01)', 'location' => 'Blok A Sentral'],
             ['code' => 'WH-02', 'name' => 'Gudang Transit (G-02)', 'location' => 'Blok B Utara'],
@@ -48,7 +60,7 @@ class ItemSampleSeeder extends Seeder
             Warehouse::firstOrCreate(['code' => $wh['code']], $wh);
         }
 
-        // 4. Sample Item Katalog
+        // 5. Sample Item Katalog
         $catHW = Category::where('code', 'CAT-HW')->first();
         $catATK = Category::where('code', 'CAT-ATK')->first();
         $catACC = Category::where('code', 'CAT-ACC')->first();
@@ -60,9 +72,9 @@ class ItemSampleSeeder extends Seeder
         $wh1 = Warehouse::where('code', 'WH-01')->first();
         $wh2 = Warehouse::where('code', 'WH-02')->first();
 
-        $typeCSM = class_exists(\App\Models\ItemType::class) ? \App\Models\ItemType::where('code', 'CSM')->first() : null;
-        $typeAST = class_exists(\App\Models\ItemType::class) ? \App\Models\ItemType::where('code', 'AST')->first() : null;
-        $typeRMT = class_exists(\App\Models\ItemType::class) ? \App\Models\ItemType::where('code', 'RMT')->first() : null;
+        $typeCSM = ItemType::where('code', 'CSM')->first();
+        $typeAST = ItemType::where('code', 'AST')->first();
+        $typeRMT = ItemType::where('code', 'RMT')->first();
 
         $items = [
             [

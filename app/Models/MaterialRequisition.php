@@ -15,12 +15,12 @@ class MaterialRequisition extends Model
         'dept_head_action_at',
         'rejection_reason',
         'purpose',
-        'notes'
+        'notes',
     ];
 
     protected function casts(): array
     {
-        return[
+        return [
             'dept_head_action_at' => 'datetime',
         ];
     }
@@ -43,7 +43,7 @@ class MaterialRequisition extends Model
         return $this->belongsTo(User::class, 'dept_head_id');
     }
 
-    //riwayat serah terima fisik barang keluar
+    // riwayat serah terima fisik barang keluar
     public function goodsIssues()
     {
         return $this->hasMany(GoodsIssue::class);

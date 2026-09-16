@@ -96,6 +96,47 @@
         {{-- Main Page Canvas --}}
         <main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
 
+            {{-- Breadcrumbs Universal (Format: Dashboard / Submenu yang dipilih) --}}
+            @hasSection('breadcrumb')
+                @yield('breadcrumb')
+            @else
+                @php
+                    $pageTitle = trim($__env->yieldContent('page-title', ''));
+                    if (empty($pageTitle)) {
+                        $title = trim($__env->yieldContent('title', ''));
+                        if (!empty($title) && $title !== 'SIMBA') {
+                            $pageTitle = $title;
+                        } elseif (request()->is('/') || request()->routeIs('dashboard')) {
+                            $pageTitle = 'Dashboard';
+                        }
+                    }
+                @endphp
+
+                @if (!empty($pageTitle))
+                    <nav aria-label="Breadcrumbs" class="-mt-3 sm:-mt-4 lg:-mt-5 mb-5 sm:mb-6 flex items-center text-xs sm:text-sm font-medium select-none">
+                        <ol class="flex items-center gap-2">
+                            @if ($pageTitle === 'Dashboard')
+                                <li class="text-gray-500 font-medium">
+                                    Dashboard
+                                </li>
+                            @else
+                                <li>
+                                    <a href="{{ url('/') }}" class="text-gray-400 hover:text-gray-700 transition">
+                                        Dashboard
+                                    </a>
+                                </li>
+                                <li class="text-gray-300 select-none">
+                                    /
+                                </li>
+                                <li class="text-gray-700 font-semibold">
+                                    {{ $pageTitle }}
+                                </li>
+                            @endif
+                        </ol>
+                    </nav>
+                @endif
+            @endif
+
             {{-- Alerts / Flash notifications --}}
             @include('layouts.partials.alerts')
 
@@ -140,8 +181,6 @@
                 }
             }
 
-            const topbarBrand = document.getElementById('topbar-collapsed-brand');
-
             function updateSidebarToggleIcon() {
                 const open = isSidebarOpen();
                 if (iconLeft && iconRight) {
@@ -150,19 +189,11 @@
                         iconLeft.classList.remove('hidden');
                         iconRight.classList.add('hidden');
                         if (toggleBtn) toggleBtn.setAttribute('title', 'Tutup Sidebar (Ctrl+B)');
-                        if (topbarBrand) {
-                            topbarBrand.classList.add('hidden');
-                            topbarBrand.classList.remove('flex');
-                        }
                     } else {
-                        // Saat tertutup: tampilkan ikon buka & brand logo di header
+                        // Saat tertutup: tampilkan ikon buka
                         iconLeft.classList.add('hidden');
                         iconRight.classList.remove('hidden');
                         if (toggleBtn) toggleBtn.setAttribute('title', 'Buka Sidebar (Ctrl+B)');
-                        if (topbarBrand) {
-                            topbarBrand.classList.remove('hidden');
-                            topbarBrand.classList.add('flex');
-                        }
                     }
                 }
             }

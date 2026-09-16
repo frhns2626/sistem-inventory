@@ -17,7 +17,7 @@ return new class extends Migration
                 'in_receipt',        // Barang Masuk dari GR
                 'out_issue',         // Barang Keluar dari GI
                 'adjustment_plus',   // Selisih Lebih dari Stock Opname
-                'adjustment_minus'   // Selisih Kurang / Rusak dari Stock Opname
+                'adjustment_minus',   // Selisih Kurang / Rusak dari Stock Opname
             ]);
             $table->decimal('quantity', 12, 2);
             $table->decimal('balance_before', 12, 2); // Saldo sebelum transaksi
@@ -44,7 +44,7 @@ return new class extends Migration
                 'draft',
                 'submitted',
                 'approved',
-                'rejected'
+                'rejected',
             ])->default('draft');
             $table->text('approval_notes')->nullable();
             $table->timestamps();

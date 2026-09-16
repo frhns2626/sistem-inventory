@@ -10,7 +10,7 @@ class Warehouse extends Model
         'code',
         'name',
         'location',
-        'is_active'
+        'is_active',
     ];
 
     public function items()

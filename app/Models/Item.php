@@ -15,7 +15,7 @@ class Item extends Model
         'type',
         'minimum_stock',
         'description',
-        'is_active'
+        'is_active',
     ];
 
     public function category()
@@ -42,5 +42,4 @@ class Item extends Model
     {
         return $this->hasMany(ItemStock::class);
     }
-
 }

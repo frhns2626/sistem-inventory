@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -54,8 +54,8 @@ return new class extends Migration
 
         // 4. Sinkronisasi data lama jika kolom type sebelumnya sudah memiliki isi
         $typeMapping = [
-            'consumable'   => 'CSM',
-            'asset'        => 'AST',
+            'consumable' => 'CSM',
+            'asset' => 'AST',
             'raw_material' => 'RMT',
         ];
 

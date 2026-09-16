@@ -1,12 +1,12 @@
-<header class="bg-white border-b border-gray-200/80 sticky top-0 z-20 h-16">
+<header class="h-16 shrink-0 bg-white border-b border-gray-200 sticky top-0 z-20">
     <div class="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-full gap-4">
-        
-        {{-- Left: Sidebar Toggle Button & Brand (tampil saat sidebar tertutup) --}}
-        <div class="flex items-center gap-2 shrink-0">
+
+        {{-- Left: Sidebar Toggle Button --}}
+        <div class="flex items-center shrink-0">
             {{-- Sidebar Toggle Button --}}
-            <button type="button" id="sidebar-toggle-btn" 
-                    class="p-2 -ml-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 transition duration-150 cursor-pointer" 
-                    title="Toggle Sidebar (Ctrl+B)" 
+            <button type="button" id="sidebar-toggle-btn"
+                    class="p-2 -ml-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 transition duration-150 cursor-pointer"
+                    title="Toggle Sidebar (Ctrl+B)"
                     aria-label="Toggle sidebar">
                 {{-- Heroicon Outline: bars-3 (open state) --}}
                 <svg id="icon-sidebar-left" class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
@@ -18,22 +18,14 @@
                     <path d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h8.25" />
                 </svg>
             </button>
-
-            {{-- Collapsed Brand Logo (Tampil saat sidebar tertutup atau di mobile) --}}
-            <a href="{{ url('/') }}" id="topbar-collapsed-brand" class="hidden items-center gap-2.5 ml-1">
-                <div class="w-7 h-7 rounded-lg bg-amber-500 text-white font-bold flex items-center justify-center text-xs tracking-tight shadow-xs ring-1 ring-amber-600/30">
-                    SB
-                </div>
-                <span class="text-sm font-bold text-gray-950 tracking-tight">SIMBA</span>
-            </a>
         </div>
 
         {{-- Right: Notifications, User Profile & Role Switcher --}}
         <div class="flex items-center gap-2 sm:gap-3 shrink-0">
 
             {{-- Notification Bell Icon --}}
-            <button type="button" 
-                    class="relative p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 transition duration-150 cursor-pointer" 
+            <button type="button"
+                    class="relative p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 transition duration-150 cursor-pointer"
                     title="Notifikasi Sistem"
                     aria-label="Notifikasi">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
@@ -49,24 +41,24 @@
                 @php
                     $user = auth()->user();
                     $userName = $user->name ?? 'Administrator';
-                    $initials = strtoupper(substr($userName, 0, 2));
-                    $currentRole = auth()->check() && $user->roles->isNotEmpty() 
-                        ? $user->roles->pluck('name')->first() 
+                    $initials = strtoupper (substr($userName, 0, 2));
+                    $currentRole = auth()->check() && $user->roles->isNotEmpty()
+                        ? $user->roles->pluck('name')->first()
                         : 'superadmin';
 
                     $availableRoles = [
-                        'superadmin'        => 'Superadmin (Akses Penuh)',
-                        'employee'          => 'Employee (Staf Pemohon)',
-                        'dept_head'         => 'Dept Head (Approver)',
-                        'purchasing'        => 'Purchasing (Pengadaan)',
-                        'warehouse_staff'   => 'Warehouse Staff (Gudang)',
+                        'superadmin'        => 'Superadmin',
+                        'employee'          => 'Employee',
+                        'dept_head'         => 'Dept Head',
+                        'purchasing'        => 'Purchasing',
+                        'warehouse_staff'   => 'Warehouse Staff',
                         'warehouse_manager' => 'Warehouse Manager',
-                        'finance'           => 'Finance (Keuangan)',
+                        'finance'           => 'Finance',
                         'auditor'           => 'Internal Auditor',
                     ];
                 @endphp
 
-                <button type="button" id="user-menu-btn" 
+                <button type="button" id="user-menu-btn"
                         class="flex items-center gap-2.5 p-1 rounded-lg hover:bg-gray-100 transition duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 cursor-pointer">
                     <div class="w-8 h-8 rounded-full bg-amber-500 text-white font-semibold flex items-center justify-center text-xs tracking-tight shadow-xs ring-2 ring-amber-500/20 shrink-0">
                         {{ $initials }}

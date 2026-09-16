@@ -15,12 +15,12 @@ class PurchaseRequest extends Model
         'dept_head_id',
         'dept_head_action_at',
         'rejection_reason',
-        'notes'
+        'notes',
     ];
 
     protected function casts(): array
     {
-        return[
+        return [
             'required_date' => 'date',
             'dept_head_action_at' => 'datetime',
         ];
@@ -48,5 +48,11 @@ class PurchaseRequest extends Model
     public function purchaseOrders()
     {
         return $this->hasMany(PurchaseOrder::class);
+    }
+
+    // Detail item yang diajukan
+    public function items()
+    {
+        return $this->hasMany(PurchaseRequestItem::class);
     }
 }

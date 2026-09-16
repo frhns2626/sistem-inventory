@@ -15,7 +15,7 @@ class StockMutation extends Model
         'reference_type',
         'reference_id',
         'created_by_id',
-        'notes'
+        'notes',
     ];
 
     protected function casts(): array
@@ -48,5 +48,6 @@ class StockMutation extends Model
     // relasi polimorfik ke model referensi mutasi
     public function reference()
     {
-        return $this->morphTo();}
+        return $this->morphTo();
+    }
 }

@@ -20,7 +20,7 @@ return new class extends Migration
                 'approved_dept_head',
                 'rejected_dept_head',
                 'po_created',
-                'cancelled'
+                'cancelled',
             ])->default('draft');
             $table->date('required_date')->nullable();
             $table->foreignId('dept_head_id')->nullable()->constrained('users')->nullOnDelete();
@@ -62,7 +62,7 @@ return new class extends Migration
                 'issued',
                 'partially_received',
                 'completed',
-                'cancelled'
+                'cancelled',
             ])->default('draft');
             $table->text('notes')->nullable();
             $table->timestamps();

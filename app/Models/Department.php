@@ -10,7 +10,7 @@ class Department extends Model
         'code',
         'name',
         'description',
-        'is_active'
+        'is_active',
     ];
 
     public function users()

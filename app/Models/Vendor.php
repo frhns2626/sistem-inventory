@@ -17,7 +17,7 @@ class Vendor extends Model
         'bank_name',
         'bank_account_number',
         'bank_account_holder',
-        'is_active'
+        'is_active',
     ];
 
     public function PurchaseOrders()

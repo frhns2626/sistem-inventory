@@ -22,7 +22,7 @@ return new class extends Migration
                 'pending_verification',
                 'verified',
                 'paid',
-                'cancelled'
+                'cancelled',
             ])->default('pending_verification');
             $table->foreignId('verified_by_id')->nullable()->constrained('users')->nullOnDelete(); // finance
             $table->string('invoice_document')->nullable();
@@ -41,7 +41,7 @@ return new class extends Migration
                 'bank_transfer',
                 'cash',
                 'cheque',
-                'giro'
+                'giro',
             ])->default('bank_transfer');
             $table->decimal('amount', 15, 2);
             $table->string('reference_number', 100)->nullable(); // No transaksi bank

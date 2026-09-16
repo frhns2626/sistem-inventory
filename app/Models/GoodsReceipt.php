@@ -15,20 +15,24 @@ class GoodsReceipt extends Model
         'verified_by_id',
         'receipt_date',
         'status',
-        'notes'
+        'notes',
     ];
+
     public function purchaseOrder()
     {
         return $this->belongsTo(PurchaseOrder::class);
     }
+
     public function warehouse()
     {
         return $this->belongsTo(Warehouse::class);
     }
+
     public function receivedBy()
     {
         return $this->belongsTo(User::class, 'received_by_id');
     }
+
     public function verifiedBy()
     {
         return $this->belongsTo(User::class, 'verified_by_id');

@@ -5,29 +5,6 @@
 
 @section('content')
 
-    {{-- BREADCRUMBS (DIBAWAH HEADER, DIATAS TITLE DASHBOARD INVENTARIS) --}}
-    <nav aria-label="Breadcrumbs" class="mb-3 flex items-center text-xs sm:text-sm font-medium select-none">
-        <ol class="flex items-center gap-2">
-            <li>
-                <a href="{{ url('/') }}" class="text-gray-400 hover:text-gray-700 transition flex items-center gap-1.5">
-                    {{-- Heroicon Mini 20x20: home --}}
-                    <svg class="w-4 h-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" clip-rule="evenodd" />
-                    </svg>
-                    <span>SIMBA</span>
-                </a>
-            </li>
-            <li class="text-gray-300">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-            </li>
-            <li class="text-gray-900 font-semibold">
-                Dashboard
-            </li>
-        </ol>
-    </nav>
-
     {{-- PAGE HEADER WITH ACTIONS --}}
     <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
@@ -74,45 +51,39 @@
                 </div>
             </div>
 
-            <div class="text-3xl font-bold font-mono tracking-tight text-gray-950 mt-3">1,248</div>
+            <div class="text-3xl font-bold font-mono tracking-tight text-gray-950 mt-3">{{ number_format($totalItems ?? 0) }}</div>
 
             <div class="mt-3 flex items-center gap-1.5">
-                {{-- Green Pill for Positive Trend --}}
                 <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
-                    {{-- Heroicon Mini 20x20: arrow-trending-up --}}
                     <svg class="w-3.5 h-3.5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M12.577 4.878a.75.75 0 01.919-.53l4.78 1.281a.75.75 0 01.531.919l-1.281 4.78a.75.75 0 01-1.449-.387l.81-3.022-4.14 4.14a.75.75 0 01-1.06 0L8 8.31 2.56 13.75a.75.75 0 01-1.06-1.06l6-6a.75.75 0 011.06 0l2.75 2.75 3.44-3.44-3.022-.81a.75.75 0 01-.531-.919z" clip-rule="evenodd" />
                     </svg>
-                    <span>+18 SKU</span>
+                    <span>SKU Aktif</span>
                 </span>
-                <span class="text-xs text-gray-500">bulan ini</span>
+                <span class="text-xs text-gray-500">di katalog master</span>
             </div>
         </div>
 
-        {{-- Metric Card 2: Pengadaan Pending --}}
+        {{-- Metric Card 2: Kategori Barang --}}
         <div class="bg-white rounded-xl p-5 sm:p-6 shadow-xs ring-1 ring-gray-950/5 relative overflow-hidden transition duration-150 hover:shadow-sm">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono">Pengadaan Pending</span>
-                {{-- Heroicon Outline 24x24: shopping-cart --}}
+                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono">Total Kategori</span>
+                {{-- Heroicon Outline 24x24: tag --}}
                 <div class="p-2 rounded-lg bg-amber-50 ring-1 ring-amber-600/10 text-amber-600">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                        <path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
                     </svg>
                 </div>
             </div>
 
-            <div class="text-3xl font-bold font-mono tracking-tight text-gray-950 mt-3">14</div>
+            <div class="text-3xl font-bold font-mono tracking-tight text-gray-950 mt-3">{{ number_format($totalCategories ?? 0) }}</div>
 
             <div class="mt-3 flex items-center gap-1.5">
-                {{-- Amber Pill for Pending Action --}}
                 <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20">
-                    {{-- Heroicon Mini 20x20: clock --}}
-                    <svg class="w-3.5 h-3.5 text-amber-600" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
-                    </svg>
-                    <span>6 PR / 8 PO</span>
+                    <span>Klasifikasi</span>
                 </span>
-                <span class="text-xs text-gray-500">butuh approval</span>
+                <span class="text-xs text-gray-500">grup inventaris</span>
             </div>
         </div>
 
@@ -128,42 +99,39 @@
                 </div>
             </div>
 
-            <div class="text-3xl font-bold font-mono tracking-tight text-rose-600 mt-3">8</div>
+            <div class="text-3xl font-bold font-mono tracking-tight text-rose-600 mt-3">{{ number_format($criticalCount ?? 0) }}</div>
 
             <div class="mt-3 flex items-center gap-1.5">
-                {{-- Rose Pill for Critical Alert --}}
                 <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-600/20">
-                    {{-- Heroicon Mini 20x20: arrow-trending-down --}}
                     <svg class="w-3.5 h-3.5 text-rose-600" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M1.5 6.75a.75.75 0 011.06 0L8 12.19l2.72-2.72a.75.75 0 011.06 0l4.14 4.14.81-3.022a.75.75 0 111.449.387l-1.281 4.78a.75.75 0 01-.919.531l-4.78-1.281a.75.75 0 01.388-1.449l3.022.81-3.44-3.44-2.75 2.75a.75.75 0 01-1.06 0l-6-6a.75.75 0 010-1.06z" clip-rule="evenodd" />
                     </svg>
-                    <span>Alert</span>
+                    <span>Perhatian</span>
                 </span>
-                <span class="text-xs text-gray-500">Di bawah batas buffer</span>
+                <span class="text-xs text-gray-500">&le; batas buffer minimum</span>
             </div>
         </div>
 
-        {{-- Metric Card 4: Valuasi Inventaris --}}
+        {{-- Metric Card 4: Tipe & Gudang --}}
         <div class="bg-white rounded-xl p-5 sm:p-6 shadow-xs ring-1 ring-gray-950/5 relative overflow-hidden transition duration-150 hover:shadow-sm">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono">Valuasi Inventaris</span>
-                {{-- Heroicon Outline 24x24: banknotes --}}
+                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider font-mono">Tipe Barang</span>
+                {{-- Heroicon Outline 24x24: square-3-stack-3d --}}
                 <div class="p-2 rounded-lg bg-gray-50 ring-1 ring-gray-950/5 text-gray-600">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                        <path d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" />
                     </svg>
                 </div>
             </div>
 
-            <div class="text-3xl font-bold font-mono tracking-tight text-gray-950 mt-3">Rp 482,5 M</div>
+            <div class="text-3xl font-bold font-mono tracking-tight text-gray-950 mt-3">{{ number_format($totalTypes ?? 0) }}</div>
 
             <div class="mt-3 flex items-center gap-1.5">
-                {{-- Neutral/Gray Pill --}}
                 <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium bg-gray-100 text-gray-700 ring-1 ring-inset ring-gray-500/20">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                    <span>3 Gudang Aktif</span>
+                    <span>{{ $warehouses->count() }} Gudang</span>
                 </span>
-                <span class="text-xs text-gray-500">total valuasi buku</span>
+                <span class="text-xs text-gray-500">lokasi penyimpanan</span>
             </div>
         </div>
 
@@ -237,11 +205,9 @@
                     <label class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5 font-mono">Kategori Barang</label>
                     <select class="w-full bg-white border border-gray-300 text-gray-800 text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition shadow-2xs">
                         <option value="">Semua Kategori</option>
-                        <option value="hardware" selected>Hardware &amp; IT</option>
-                        <option value="atk">ATK &amp; Kantor</option>
-                        <option value="aksesoris">Aksesoris IT</option>
-                        <option value="jaringan">Jaringan &amp; Kabel</option>
-                        <option value="sparepart">Sparepart Operasional</option>
+                        @foreach ($categories as $cat)
+                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -249,9 +215,9 @@
                     <label class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5 font-mono">Lokasi Gudang</label>
                     <select class="w-full bg-white border border-gray-300 text-gray-800 text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition shadow-2xs">
                         <option value="">Semua Lokasi Gudang</option>
-                        <option value="wh1" selected>Gudang Utama (Jakarta)</option>
-                        <option value="wh2">Gudang Logistik (Cikarang)</option>
-                        <option value="wh3">Gudang Transit (Surabaya)</option>
+                        @foreach ($warehouses as $wh)
+                            <option value="{{ $wh->id }}">{{ $wh->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -291,346 +257,108 @@
 
                 {{-- Table Body --}}
                 <tbody class="divide-y divide-gray-200/60 font-sans">
-                    
-                    {{-- Row 1: Normal Status --}}
-                    <tr class="hover:bg-gray-50/60 transition duration-75 group">
-                        <td class="py-3.5 pl-6 pr-3 whitespace-nowrap align-middle">
-                            <span class="font-mono text-xs font-semibold text-gray-700 bg-gray-100/90 px-2.5 py-1 rounded-md ring-1 ring-gray-900/5 inline-block">
-                                ITM-2026-001
-                            </span>
-                        </td>
-                        <td class="py-3.5 px-3 align-middle max-w-xs sm:max-w-sm">
-                            <div class="font-semibold text-sm text-gray-950 group-hover:text-amber-600 transition duration-150">
-                                Laptop Dell Latitude 3420 14"
-                            </div>
-                            <div class="text-xs text-gray-500 truncate mt-0.5">
-                                Intel Core i5-1135G7, 16GB DDR4, 512GB NVMe SSD
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 whitespace-nowrap align-middle">
-                            <span class="inline-flex items-center gap-1.5 text-xs text-gray-700 font-medium">
-                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                                Hardware &amp; IT
-                            </span>
-                        </td>
-                        <td class="py-3.5 px-3 whitespace-nowrap align-middle">
-                            <div class="inline-flex items-center gap-1 text-xs text-gray-600">
-                                {{-- Heroicon Mini 20x20: map-pin --}}
-                                <svg class="w-3.5 h-3.5 text-gray-400 shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.776 11.776 0 001.038.573l.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
-                                </svg>
-                                <span>Gudang Utama (Rak A-02)</span>
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 align-middle">
-                            {{-- Stok Fisik & Buffer Ratio Indicator --}}
-                            <div class="flex flex-col gap-1 min-w-[140px]">
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="font-mono font-semibold text-gray-900">24 Unit</span>
-                                    <span class="text-[11px] text-gray-400 font-mono">Min: 5</span>
+                    @forelse ($items as $item)
+                        @php
+                            $stock = (float) ($item->total_stock ?? 0);
+                            $min = (float) ($item->minimum_stock ?? 0);
+                            $unit = $item->unit->symbol ?? ($item->unit->name ?? 'Unit');
+                            $isCritical = $stock <= $min;
+                            $isZero = $stock <= 0;
+                            $whName = $item->stocks->first()->warehouse->name ?? 'Gudang Utama';
+                            $ratio = $min > 0 ? min(100, round(($stock / $min) * 100)) : 100;
+                        @endphp
+                        <tr class="hover:bg-gray-50/60 {{ $isCritical ? 'bg-rose-50/15' : '' }} transition duration-75 group">
+                            <td class="py-3.5 pl-6 pr-3 whitespace-nowrap align-middle">
+                                <span class="font-mono text-xs font-semibold {{ $isCritical ? 'text-rose-700 bg-rose-50 ring-rose-600/20' : 'text-gray-700 bg-gray-100/90 ring-gray-900/5' }} px-2.5 py-1 rounded-md ring-1 inline-block">
+                                    {{ $item->code }}
+                                </span>
+                            </td>
+                            <td class="py-3.5 px-3 align-middle max-w-xs sm:max-w-sm">
+                                <div class="font-semibold text-sm text-gray-950 group-hover:text-amber-600 transition duration-150">
+                                    {{ $item->name }}
                                 </div>
-                                <div class="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden ring-1 ring-gray-200/50">
-                                    <div class="bg-emerald-500 h-full rounded-full" style="width: 82%"></div>
+                                @if($item->description)
+                                    <div class="text-xs text-gray-500 truncate mt-0.5">
+                                        {{ $item->description }}
+                                    </div>
+                                @endif
+                            </td>
+                            <td class="py-3.5 px-3 whitespace-nowrap align-middle">
+                                <span class="inline-flex items-center gap-1.5 text-xs text-gray-700 font-medium">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                    {{ $item->category->name ?? '-' }}
+                                </span>
+                            </td>
+                            <td class="py-3.5 px-3 whitespace-nowrap align-middle">
+                                <div class="inline-flex items-center gap-1 text-xs text-gray-600">
+                                    <svg class="w-3.5 h-3.5 text-gray-400 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.776 11.776 0 001.038.573l.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>{{ $whName }}</span>
                                 </div>
-                                <span class="text-[10px] text-emerald-600 font-medium">Stok Aman (4.8x Buffer)</span>
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 text-center whitespace-nowrap align-middle">
-                            {{-- Filament Soft Pill: Normal --}}
-                            <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                Normal
-                            </span>
-                        </td>
-                        <td class="py-3.5 pl-3 pr-6 text-right whitespace-nowrap align-middle">
-                            <div class="inline-flex items-center gap-1 justify-end">
-                                <a href="#" class="inline-flex items-center gap-1 font-semibold text-xs text-gray-700 hover:text-amber-600 transition px-2 py-1 rounded-md hover:bg-gray-100 cursor-pointer">
-                                    {{-- Heroicon Mini 20x20: eye --}}
+                            </td>
+                            <td class="py-3.5 px-3 align-middle">
+                                <div class="flex flex-col gap-1 min-w-[140px]">
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="font-mono font-semibold {{ $isCritical ? 'text-rose-600 font-bold' : 'text-gray-900' }}">{{ $stock }} {{ $unit }}</span>
+                                        <span class="text-[11px] text-gray-400 font-mono">Min: {{ $min }}</span>
+                                    </div>
+                                    <div class="w-full {{ $isCritical ? 'bg-rose-100 ring-rose-200' : 'bg-gray-100 ring-gray-200/50' }} rounded-full h-1.5 overflow-hidden ring-1">
+                                        <div class="{{ $isCritical ? 'bg-rose-500' : 'bg-emerald-500' }} h-full rounded-full" style="width: {{ $ratio }}%"></div>
+                                    </div>
+                                    <span class="text-[10px] {{ $isCritical ? 'text-rose-600 font-semibold' : 'text-emerald-600 font-medium' }}">
+                                        {{ $isCritical ? 'Di bawah buffer' : 'Stok Aman' }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="py-3.5 px-3 text-center whitespace-nowrap align-middle">
+                                @if(!$item->is_active)
+                                    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium bg-gray-100 text-gray-600 ring-1 ring-inset ring-gray-500/20">
+                                        Nonaktif
+                                    </span>
+                                @elseif($isZero)
+                                    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-600/20">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                                        Habis
+                                    </span>
+                                @elseif($isCritical)
+                                    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-600/20">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                                        Kritis
+                                    </span>
+                                @else
+                                    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                        Normal
+                                    </span>
+                                @endif
+                            </td>
+                            <td class="py-3.5 pl-3 pr-6 text-right whitespace-nowrap align-middle">
+                                <a href="{{ route('items.index') }}" class="inline-flex items-center gap-1 font-semibold text-xs text-gray-700 hover:text-amber-600 transition px-2.5 py-1 rounded-md hover:bg-gray-100 cursor-pointer">
                                     <svg class="w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
                                         <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
                                         <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113z" clip-rule="evenodd" />
                                     </svg>
-                                    <span>Lihat</span>
+                                    <span>Kelola</span>
                                 </a>
-                                <button type="button" class="p-1 rounded-md text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition focus:outline-none cursor-pointer" title="Opsi Lainnya">
-                                    {{-- Heroicon Mini 20x20: ellipsis-vertical --}}
-                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 14a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-
-                    {{-- Row 2: Kritis Status --}}
-                    <tr class="hover:bg-rose-50/30 bg-rose-50/15 transition duration-75 group">
-                        <td class="py-3.5 pl-6 pr-3 whitespace-nowrap align-middle">
-                            <span class="font-mono text-xs font-semibold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-md ring-1 ring-rose-600/20 inline-block">
-                                ITM-2026-042
-                            </span>
-                        </td>
-                        <td class="py-3.5 px-3 align-middle max-w-xs sm:max-w-sm">
-                            <div class="font-semibold text-sm text-gray-950 group-hover:text-amber-600 transition duration-150">
-                                Kertas HVS A4 80gr PaperOne
-                            </div>
-                            <div class="text-xs text-gray-500 truncate mt-0.5">
-                                Dus isi 5 Rim (Box), Putih Bersih 98% Brightness
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 whitespace-nowrap align-middle">
-                            <span class="inline-flex items-center gap-1.5 text-xs text-gray-700 font-medium">
-                                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                                ATK &amp; Kantor
-                            </span>
-                        </td>
-                        <td class="py-3.5 px-3 whitespace-nowrap align-middle">
-                            <div class="inline-flex items-center gap-1 text-xs text-gray-600">
-                                <svg class="w-3.5 h-3.5 text-gray-400 shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.776 11.776 0 001.038.573l.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
-                                </svg>
-                                <span>Gudang Utama (Rak C-05)</span>
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 align-middle">
-                            {{-- Critical Buffer Ratio --}}
-                            <div class="flex flex-col gap-1 min-w-[140px]">
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="font-mono font-bold text-rose-600">2 Dus</span>
-                                    <span class="text-[11px] text-rose-400 font-mono font-medium">Min: 10</span>
-                                </div>
-                                <div class="w-full bg-rose-100 rounded-full h-1.5 overflow-hidden ring-1 ring-rose-200">
-                                    <div class="bg-rose-500 h-full rounded-full" style="width: 20%"></div>
-                                </div>
-                                <span class="text-[10px] text-rose-600 font-semibold">Defisit 8 Dus (Segera Restock)</span>
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 text-center whitespace-nowrap align-middle">
-                            {{-- Filament Soft Pill: Kritis --}}
-                            <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-600/20">
-                                <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
-                                Kritis
-                            </span>
-                        </td>
-                        <td class="py-3.5 pl-3 pr-6 text-right whitespace-nowrap align-middle">
-                            <div class="inline-flex items-center gap-1 justify-end">
-                                <a href="{{ url('/purchase-requests/create?item_id=ITM-2026-042') }}" 
-                                   class="inline-flex items-center gap-1 font-semibold text-xs text-rose-700 hover:text-rose-900 bg-rose-50 hover:bg-rose-100 transition px-2.5 py-1 rounded-md ring-1 ring-inset ring-rose-600/20 cursor-pointer">
-                                    <span>+ Buat PR</span>
-                                </a>
-                                <button type="button" class="p-1 rounded-md text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition focus:outline-none cursor-pointer" title="Opsi Lainnya">
-                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 14a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-
-                    {{-- Row 3: Normal Status --}}
-                    <tr class="hover:bg-gray-50/60 transition duration-75 group">
-                        <td class="py-3.5 pl-6 pr-3 whitespace-nowrap align-middle">
-                            <span class="font-mono text-xs font-semibold text-gray-700 bg-gray-100/90 px-2.5 py-1 rounded-md ring-1 ring-gray-900/5 inline-block">
-                                ITM-2026-088
-                            </span>
-                        </td>
-                        <td class="py-3.5 px-3 align-middle max-w-xs sm:max-w-sm">
-                            <div class="font-semibold text-sm text-gray-950 group-hover:text-amber-600 transition duration-150">
-                                Mouse Wireless Logitech M220 Silent
-                            </div>
-                            <div class="text-xs text-gray-500 truncate mt-0.5">
-                                Warna Charcoal Grey, 2.4GHz Nano Receiver
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 whitespace-nowrap align-middle">
-                            <span class="inline-flex items-center gap-1.5 text-xs text-gray-700 font-medium">
-                                <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                                Aksesoris IT
-                            </span>
-                        </td>
-                        <td class="py-3.5 px-3 whitespace-nowrap align-middle">
-                            <div class="inline-flex items-center gap-1 text-xs text-gray-600">
-                                <svg class="w-3.5 h-3.5 text-gray-400 shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.776 11.776 0 001.038.573l.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
-                                </svg>
-                                <span>Gudang Logistik (Rak B-01)</span>
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 align-middle">
-                            <div class="flex flex-col gap-1 min-w-[140px]">
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="font-mono font-semibold text-gray-900">18 Unit</span>
-                                    <span class="text-[11px] text-gray-400 font-mono">Min: 5</span>
-                                </div>
-                                <div class="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden ring-1 ring-gray-200/50">
-                                    <div class="bg-emerald-500 h-full rounded-full" style="width: 76%"></div>
-                                </div>
-                                <span class="text-[10px] text-emerald-600 font-medium">Stok Aman (3.6x Buffer)</span>
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 text-center whitespace-nowrap align-middle">
-                            <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                Normal
-                            </span>
-                        </td>
-                        <td class="py-3.5 pl-3 pr-6 text-right whitespace-nowrap align-middle">
-                            <div class="inline-flex items-center gap-1 justify-end">
-                                <a href="#" class="inline-flex items-center gap-1 font-semibold text-xs text-gray-700 hover:text-amber-600 transition px-2 py-1 rounded-md hover:bg-gray-100 cursor-pointer">
-                                    <svg class="w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
-                                        <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113z" clip-rule="evenodd" />
-                                    </svg>
-                                    <span>Lihat</span>
-                                </a>
-                                <button type="button" class="p-1 rounded-md text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition focus:outline-none cursor-pointer" title="Opsi Lainnya">
-                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 14a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-
-                    {{-- Row 4: Menipis Status --}}
-                    <tr class="hover:bg-amber-50/30 bg-amber-50/15 transition duration-75 group">
-                        <td class="py-3.5 pl-6 pr-3 whitespace-nowrap align-middle">
-                            <span class="font-mono text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md ring-1 ring-amber-600/20 inline-block">
-                                ITM-2026-104
-                            </span>
-                        </td>
-                        <td class="py-3.5 px-3 align-middle max-w-xs sm:max-w-sm">
-                            <div class="font-semibold text-sm text-gray-950 group-hover:text-amber-600 transition duration-150">
-                                Kabel UTP Cat6 Belden 305m
-                            </div>
-                            <div class="text-xs text-gray-500 truncate mt-0.5">
-                                Roll original blue jacket, UTP 4-Pair 23 AWG
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 whitespace-nowrap align-middle">
-                            <span class="inline-flex items-center gap-1.5 text-xs text-gray-700 font-medium">
-                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
-                                Jaringan &amp; Kabel
-                            </span>
-                        </td>
-                        <td class="py-3.5 px-3 whitespace-nowrap align-middle">
-                            <div class="inline-flex items-center gap-1 text-xs text-gray-600">
-                                <svg class="w-3.5 h-3.5 text-gray-400 shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.776 11.776 0 001.038.573l.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
-                                </svg>
-                                <span>Gudang Logistik (Rak D-02)</span>
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 align-middle">
-                            {{-- Warning Buffer Ratio --}}
-                            <div class="flex flex-col gap-1 min-w-[140px]">
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="font-mono font-bold text-amber-700">1 Roll</span>
-                                    <span class="text-[11px] text-amber-600/80 font-mono font-medium">Min: 3</span>
-                                </div>
-                                <div class="w-full bg-amber-100 rounded-full h-1.5 overflow-hidden ring-1 ring-amber-200">
-                                    <div class="bg-amber-500 h-full rounded-full" style="width: 33%"></div>
-                                </div>
-                                <span class="text-[10px] text-amber-700 font-medium">Di Bawah Batas Buffer</span>
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 text-center whitespace-nowrap align-middle">
-                            {{-- Filament Soft Pill: Menipis --}}
-                            <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20">
-                                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                                Menipis
-                            </span>
-                        </td>
-                        <td class="py-3.5 pl-3 pr-6 text-right whitespace-nowrap align-middle">
-                            <div class="inline-flex items-center gap-1 justify-end">
-                                <a href="#" class="inline-flex items-center gap-1 font-semibold text-xs text-amber-700 hover:text-amber-900 transition px-2 py-1 rounded-md hover:bg-amber-100/60 cursor-pointer">
-                                    <svg class="w-4 h-4 text-amber-600" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
-                                        <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113z" clip-rule="evenodd" />
-                                    </svg>
-                                    <span>Lihat</span>
-                                </a>
-                                <button type="button" class="p-1 rounded-md text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition focus:outline-none cursor-pointer" title="Opsi Lainnya">
-                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 14a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-
-                    {{-- Row 5: Menipis Status --}}
-                    <tr class="hover:bg-amber-50/30 bg-amber-50/15 transition duration-75 group">
-                        <td class="py-3.5 pl-6 pr-3 whitespace-nowrap align-middle">
-                            <span class="font-mono text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md ring-1 ring-amber-600/20 inline-block">
-                                ITM-2026-155
-                            </span>
-                        </td>
-                        <td class="py-3.5 px-3 align-middle max-w-xs sm:max-w-sm">
-                            <div class="font-semibold text-sm text-gray-950 group-hover:text-amber-600 transition duration-150">
-                                Toner HP LaserJet 85A (CE285A)
-                            </div>
-                            <div class="text-xs text-gray-500 truncate mt-0.5">
-                                Black Monochrome Cartridge, yield ~1,600 lembar
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 whitespace-nowrap align-middle">
-                            <span class="inline-flex items-center gap-1.5 text-xs text-gray-700 font-medium">
-                                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                                ATK &amp; Kantor
-                            </span>
-                        </td>
-                        <td class="py-3.5 px-3 whitespace-nowrap align-middle">
-                            <div class="inline-flex items-center gap-1 text-xs text-gray-600">
-                                <svg class="w-3.5 h-3.5 text-gray-400 shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.776 11.776 0 001.038.573l.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
-                                </svg>
-                                <span>Gudang Utama (Rak C-02)</span>
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 align-middle">
-                            <div class="flex flex-col gap-1 min-w-[140px]">
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="font-mono font-bold text-amber-700">3 Box</span>
-                                    <span class="text-[11px] text-amber-600/80 font-mono font-medium">Min: 8</span>
-                                </div>
-                                <div class="w-full bg-amber-100 rounded-full h-1.5 overflow-hidden ring-1 ring-amber-200">
-                                    <div class="bg-amber-500 h-full rounded-full" style="width: 37%"></div>
-                                </div>
-                                <span class="text-[10px] text-amber-700 font-medium">Buffer Rendah (0.37x)</span>
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-3 text-center whitespace-nowrap align-middle">
-                            <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20">
-                                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                                Menipis
-                            </span>
-                        </td>
-                        <td class="py-3.5 pl-3 pr-6 text-right whitespace-nowrap align-middle">
-                            <div class="inline-flex items-center gap-1 justify-end">
-                                <a href="#" class="inline-flex items-center gap-1 font-semibold text-xs text-amber-700 hover:text-amber-900 transition px-2 py-1 rounded-md hover:bg-amber-100/60 cursor-pointer">
-                                    <svg class="w-4 h-4 text-amber-600" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
-                                        <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113z" clip-rule="evenodd" />
-                                    </svg>
-                                    <span>Lihat</span>
-                                </a>
-                                <button type="button" class="p-1 rounded-md text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition focus:outline-none cursor-pointer" title="Opsi Lainnya">
-                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 14a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="7" class="py-12 text-center text-gray-400 font-mono text-xs">
+                                <p class="font-medium text-gray-600 mb-1">Belum ada data barang di inventaris.</p>
+                                <p class="text-[11px] text-gray-400">Jalankan <code class="bg-gray-100 text-amber-700 px-1.5 py-0.5 rounded font-bold">php artisan db:seed</code> untuk memuat data contoh melalui seeder.</p>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
 
-        {{-- TABLE PAGINATION BAR (FILAMENT v3 MINIMALIST PAGINATION) --}}
+        {{-- TABLE FOOTER BAR --}}
         <div class="px-4 sm:px-6 py-3.5 border-t border-gray-200/70 bg-white flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
             <div>
-                Menampilkan <span class="font-semibold text-gray-900">1</span> sampai <span class="font-semibold text-gray-900">5</span> dari <span class="font-semibold text-gray-900">1,248</span> hasil
+                Menampilkan <span class="font-semibold text-gray-900">{{ $items->count() }}</span> dari <span class="font-semibold text-gray-900">{{ $totalItems ?? 0 }}</span> total barang katalog
             </div>
 
             <div class="flex items-center gap-4">

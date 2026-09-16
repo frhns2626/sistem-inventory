@@ -21,7 +21,7 @@ return new class extends Migration
                 'rejected',
                 'in_progress',
                 'completed',
-                'cancelled'
+                'cancelled',
             ])->default('draft');
             $table->foreignId('dept_head_id')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamp('dept_head_action_at')->nullable();
